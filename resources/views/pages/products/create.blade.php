@@ -40,6 +40,20 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Price</label>
+                                <input type="number"
+                                    class="form-control @error('price')
+                                        is-invalid
+                                @enderror" name="price">
+                                @error('price')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+
+                            <div class="form-group">
                                 <label>Stock</label>
                                 <input type="number"
                                     class="form-control @error('stock')
@@ -51,7 +65,6 @@
                                 </div>
                                 @enderror
                             </div>
-
 
                             <div class="form-group">
                                 <label class="form-label">Category</label>

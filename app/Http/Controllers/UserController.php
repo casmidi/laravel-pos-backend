@@ -51,7 +51,7 @@ class UserController extends Controller
         $data = $request->validated();
         // $user = \App\Models\User::findOrFail($user);
         $user->update($data);
-        return redirect()->route('users.index')->with('success','User successfully updated');
+        return redirect()->route('user.index')->with('success','User successfully updated');
     }
 
     public function destroy(User $user)
