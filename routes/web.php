@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('pages.auth.login');
+// });
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.auth.login');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', function () {
+        return view('pages.dashboard');
+    });
+
+    Route::resource('user',UserController::class);
+    Route::resource('product',ProductController::class);
+
+});
+
+// Route::get('/login', function () {
+//     return view('pages.auth.login');
+// })->name('login');
+
+// Route::get('/register',function() {
+//     return view('pages.auth.register');
+// })->name('register');
+
+// Route::get('/users',function () {
+//     return view('pages.users.index');
+// });
