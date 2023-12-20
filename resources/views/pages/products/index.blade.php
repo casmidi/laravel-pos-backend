@@ -66,7 +66,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Category</th>
-                                            <th>Stock</th>
+                                            <th>Price</th>
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
@@ -74,8 +74,10 @@
                                             <tr>
                                                 <td>{{ $product->name }} </td>
                                                 <td>{{ $product->category }} </td>
-                                                <td>{{ $product->stock }} </td>
-                                                <td>{{ $product->created_at }}</td>
+                                                <td>{{ number_format($product->price, 0, ',', ',') }}</td>
+                                                {{-- <td>{{ $product->price }} </td> --}}
+                                                {{-- <td>{{ $product->created_at }}</td> --}}
+                                                <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d-m-Y') }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="{{ route('product.edit', $product->id) }}">

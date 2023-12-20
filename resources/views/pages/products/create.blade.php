@@ -50,6 +50,10 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
+
+                                {{-- <input type="text" class="form-control" name="price" id="priceInput" oninput="formatPrice(this)"> --}}
+
+
                             </div>
 
 
@@ -108,3 +112,20 @@
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/page/forms-advanced-forms.js') }}"></script>
 @endpush
+
+<script>
+    function formatPrice(input) {
+        // Hapus karakter selain angka
+        let value = input.value.replace(/[^\d]/g, '');
+
+        // Format angka ke dalam format mata uang Indonesia
+        let formattedValue = new Intl.NumberFormat('id-ID').format(value);
+
+        // Tampilkan hasil format di input
+        input.value = formattedValue;
+
+        // Simpan nilai tanpa pemisah ribuan di atribut data
+        input.setAttribute('data-raw-value', value);
+    }
+</script>
+
