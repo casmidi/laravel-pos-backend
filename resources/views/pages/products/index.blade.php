@@ -67,6 +67,7 @@
                                             <th>Name</th>
                                             <th>Category</th>
                                             <th>Price</th>
+                                            <th>Photo</th>
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
@@ -74,10 +75,15 @@
                                             <tr>
                                                 <td>{{ $product->name }} </td>
                                                 <td>{{ $product->category }} </td>
-                                                <td>{{ number_format($product->price, 0, ',', ',') }}</td>
-                                                {{-- <td>{{ $product->price }} </td> --}}
-                                                {{-- <td>{{ $product->created_at }}</td> --}}
-                                                <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d-m-Y') }}</td>
+                                                <td>{{ $product->price }} </td>
+                                                <td>
+                                                    @if ($product->image)
+                                                        <img src="{{ asset('storage/products/'.$product->image) }}"  alt=""
+                                                            width="100px" class="img-thumbnail">
+                                                            @else
+                                                            <span class="badge badge-danger">No Image</span>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="{{ route('product.edit', $product->id) }}">
