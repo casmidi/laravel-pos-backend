@@ -76,15 +76,13 @@
                                                 <td>{{ $product->name }} </td>
                                                 <td>{{ $product->category }} </td>
                                                 <td>{{ $product->price }} </td>
-                                                <td>{{ $product->image }} </td>
-                                                    {{-- {{ $product->image }} --}}
-                                                    {{-- @if ($product->image)
+                                                <td>
+                                                    @if ($product->image)
                                                         <img src="{{ asset('storage/products/' . $product->image) }}"
                                                             alt="" width="100px" class="img-thumbnail">
                                                     @else
                                                         <span class="badge badge-danger">No Image</span>
-                                                    @endif --}}
-                                                {{-- </td> --}}
+                                                    @endif
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="{{ route('product.edit', $product->id) }}">
