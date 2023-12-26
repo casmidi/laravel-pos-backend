@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 // use App\Http\Controller\Controller;
-
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class ProductController2 extends Controller
 {
