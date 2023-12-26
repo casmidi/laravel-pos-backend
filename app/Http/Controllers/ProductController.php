@@ -1,11 +1,7 @@
 <?php
 
-// namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\DB;
-
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,15 +11,13 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         //get data products
-        //$products=DB::table('users')::table('users')::table('products')
-        $products=DB::table('users')::table('users')::table('products')
+        $products=DB::table('products')
             ->when($request->input('name'), function($query,$name) {
                 return $query->where('name','like','%'.$name.'%');
             })
             ->orderBy('created_at','desc')
             ->paginate(10);
         //sort by created_at desc
-        // $products->sortByDesc('created_at');
 
         return view('pages.products.index',compact('products'));
     }

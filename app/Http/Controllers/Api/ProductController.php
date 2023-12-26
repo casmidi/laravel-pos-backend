@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-// use App\Http\Controller\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProductController2 extends Controller
+class ProductController extends Controller
 {
     public function index(Request $request)
     {
@@ -19,16 +19,17 @@ class ProductController2 extends Controller
         ],200);
     }
 
-    public function create()
-    {
-        return view('pages.products.create');
-    }
-
+   /**
+    * store a newly created resource in storage.
+    */
     public function store(Request $request)
     {
         $data = $request->all();
     }
 
+    /*
+     * Display the specified resource.
+    */
     public function show(string $id)
     {
         //
