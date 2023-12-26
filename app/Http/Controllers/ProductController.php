@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Validation\Rules\Unique;
 
 class ProductController extends Controller
 {
@@ -13,7 +11,6 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         //get data products
-        // $products = \App\Models\Product::paginate(10);
         $products=DB::table('products')
             ->when($request->input('name'), function($query,$name) {
                 return $query->where('name','like','%'.$name.'%');
@@ -41,25 +38,19 @@ class ProductController extends Controller
             'image'=>'required|image|mimes:png,jpg,jpeg'
         ]);
 
-
         $filename = uniqid() . '.' . $request->image->extension();
         $request->image->storeAs('public/products',$filename);
         $data = $request->all();
 
         $product = new \App\Models\Product;
         $product->name = $request->name;
-        $product->description = $request->description;
+        // $product->description = $request->description;
         $product->price = (int) $request->price;
         $product->stock = (int) $request->stock;
         $product->category = $request->category;
         $product->image = $filename;
         $product->save();
 
-        return redirect()->route('product.index')->with('success','Product successfully created');
-
-
-        $data = $request->all();
-        \App\Models\Product::create($data);
         return redirect()->route('product.index')->with('success','Product successfully created');
     }
 
