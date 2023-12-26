@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 // use App\Http\Controller\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class ProductController extends Controller
+class ProductController2 extends Controller
 {
     public function index(Request $request)
     {
