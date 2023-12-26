@@ -38,6 +38,7 @@ class ProductController extends Controller
         ]);
 
         $filename = uniqid() . '.' . $request->image->extension();
+        // $request->image->storeAs('public/products',$filename);
         $request->image->storeAs('public/products',$filename);
         $data = $request->all();
 
