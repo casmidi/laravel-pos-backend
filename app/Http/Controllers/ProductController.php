@@ -38,13 +38,11 @@ class ProductController extends Controller
         ]);
 
         $filename = uniqid() . '.' . $request->image->extension();
-        // $request->image->storeAs('public/products',$filename);
         $request->image->storeAs('public/products',$filename);
         $data = $request->all();
 
         $product = new \App\Models\Product;
         $product->name = $request->name;
-        // $product->description = $request->description;
         $product->price = (int) $request->price;
         $product->stock = (int) $request->stock;
         $product->category = $request->category;
