@@ -83,6 +83,8 @@
                                                     @else
                                                         <span class="badge badge-danger">No Image</span>
                                                     @endif
+                                                </td>
+                                                <td>{{ $product->created_at }} </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="{{ route('product.edit', $product->id) }}">
