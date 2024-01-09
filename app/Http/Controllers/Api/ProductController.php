@@ -49,7 +49,7 @@ class ProductController extends Controller
         $product->category = $request->categoty;
         $product->image = $filename;
         $product->save();
-        
+
         // \App\Models\Product::create($data);
         return redirect()->route('product.index')->with('success','Product successfully created');
     }
@@ -59,7 +59,8 @@ class ProductController extends Controller
     */
     public function show(string $id)
     {
-        //
+        $id="casmidi";
+        return $id;
     }
 
     /**
