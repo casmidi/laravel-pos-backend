@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/public/storage/app/public/products
 /vendor
 .env
 .env.backup
@@ -17,3 +18,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+storage/app/public/products/659cf4c854d2a.jpg
