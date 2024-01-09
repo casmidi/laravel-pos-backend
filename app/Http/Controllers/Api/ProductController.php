@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
- 
-   /**
-    * store a newly created resource in storage.
-    */
+    public function index(Request $request)
+    {
+        //get data products
+        // $products = \App\Models\Product::orderBy('id','desc')->get();
+        $products = \App\Models\Product::orderBy('id', 'desc')->get();
+        return response()->json([
+            'success' => true,
+            'message' => 'List Data Product',
+            'data' => $products
+        ], 200);
+    }
+
+    /**
+     * store a newly created resource in storage.
+     */
     public function create()
     {
         return view('pages.products.create');
@@ -27,12 +38,12 @@ class ProductController extends Controller
         ]);
 
         $filename = uniqid() . '.' . $request->image->extension();
-        $request->image->storeAs('public/products',$filename);
+        $request->image->storeAs('public/products', $filename);
         $data = $request->all();
 
         $product = new \App\Models\Product;
         $product->name = $request->name;
-        $product->description = $request ->description;
+        $product->description = $request->description;
         $product->price = (int) $request->price;
         $product->stock = (int) $request->stock;
         $product->category = $request->categoty;
@@ -40,7 +51,7 @@ class ProductController extends Controller
         $product->save();
 
         // \App\Models\Product::create($data);
-        return redirect()->route('product.index')->with('success','Product successfully created');
+        return redirect()->route('product.index')->with('success', 'Product successfully created');
     }
 
     /*
@@ -48,7 +59,7 @@ class ProductController extends Controller
     */
     public function show(string $id)
     {
-        $id="casmidi asli";
+        $id = "casmidi asli";
         return $id;
     }
 
@@ -61,14 +72,13 @@ class ProductController extends Controller
         $data = $request->all();
         $product = \App\Models\Product::findOrFail($id);
         $product->update($data);
-        return redirect()->route('product.index')->with('success','Product successfully update');
-
+        return redirect()->route('product.index')->with('success', 'Product successfully update');
     }
 
     public function destroy($id)
     {
         $product = \App\Models\Product::findOrFail($id);
         $product->delete();
-        return redirect()->route('product.index')->with('success','Product successfully deleted');
+        return redirect()->route('product.index')->with('success', 'Product successfully deleted');
     }
 }
