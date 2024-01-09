@@ -59,7 +59,7 @@ class ProductController extends Controller
     */
     public function show(string $id)
     {
-        $id="casmidi";
+        $id="casmidi asli";
         return $id;
     }
 
