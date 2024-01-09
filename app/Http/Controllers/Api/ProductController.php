@@ -7,18 +7,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
-    {
-        //get data products
-        // $products = \App\Models\Product::orderBy('id','desc')->get();
-        $products= \App\Models\Product::orderBy('id','desc')->get();
-        return response()->json([
-            'success' => true,
-            'message' => 'List Data Product',
-            'data'=> $products
-        ],200);
-    }
-
+ 
    /**
     * store a newly created resource in storage.
     */
