@@ -43,12 +43,10 @@ class ProductController extends Controller
             'name' => $request->name,
             'price' => (int) $request->price,
             'stock' => (int) $request->stock,
-            'category' => $request->categoty,
+            'category' => $request->category,
             'image' => $filename,
             'is_favorite' => $request->is_favorite
         ]);
-        // \App\Models\Product::create($data);
-        // return redirect()->route('product.index')->with('success', 'Product successfully created');
 
         if ($product){
             return response()->json([
