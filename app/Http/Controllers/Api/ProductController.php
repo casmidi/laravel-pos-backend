@@ -45,7 +45,7 @@ class ProductController extends Controller
             'stock' => (int) $request->stock,
             'category' => $request->category,
             'image' => $filename,
-            'is_favorite' => $request->is_favorite
+            'is_best_seller' => $request->is_best_seller
         ]);
 
         if ($product){
@@ -67,8 +67,8 @@ class ProductController extends Controller
     */
     public function show(string $id)
     {
-        $id = "casmidi asli";
-        return $id;
+        // $id = "casmidi asli";
+        // return $id;
     }
 
     /**
